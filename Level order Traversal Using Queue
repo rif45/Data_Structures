@@ -1,0 +1,64 @@
+/* package whatever; // don't place package name! */
+
+import java.util.*;
+import java.lang.*;
+import java.io.*;
+
+/* Name of the class has to be "Main" only if the class is public. */
+	
+	class Node 
+{ 
+    int key; 
+    Node left, right; 
+  
+    public Node(int item) 
+    { 
+        key = item; 
+        left = right = null; 
+    } 
+} 
+  
+class BinaryTree 
+{ 
+    // Root of Binary Tree 
+  static  Node root; 
+  
+    BinaryTree() 
+    { 
+        root = null; 
+    } 
+    
+  public static  void levelorder()
+    {	
+    	Queue<Node> q = new LinkedList<Node>();
+    	q.add(root);
+    	while(!q.isEmpty())
+    	{
+    		Node tempnode = q.poll();
+    		System.out.print(tempnode.key + " ");
+    		if(tempnode.left!=null)	
+    		{
+    			q.add(tempnode.left);
+    		}
+    		if(tempnode.right!=null)
+    		{
+    			q.add(tempnode.right);
+    		}
+    	}
+    }
+	public static void main (String[] args) throws java.lang.Exception
+	{
+	
+    
+        BinaryTree tree = new BinaryTree(); 
+        tree.root = new Node(1); 
+        tree.root.left = new Node(2); 
+        tree.root.right = new Node(3); 
+        tree.root.left.left = new Node(4); 
+        tree.root.left.right = new Node(5); 
+  
+        System.out.println("Preorder traversal of binary tree is "); 
+        levelorder(); 
+  
+	}
+}
